@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <Folder Include="Areas\Bartender\Controllers\" />
+    <Folder Include="Areas\Manager\Controllers\" />
   </ItemGroup>
 
 </Project>
