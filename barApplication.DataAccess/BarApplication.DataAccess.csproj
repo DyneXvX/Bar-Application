@@ -1,17 +1,24 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.7" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
+    <Compile Remove="Migrations\20200820220009_AddBarMenuAndOrderToDb.cs" />
+    <Compile Remove="Migrations\20200820220009_AddBarMenuAndOrderToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200820220249_AddBarMenuAndOrderToDb.cs" />
+    <Compile Remove="Migrations\20200820220249_AddBarMenuAndOrderToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200820220819_AddBarMenuAndOrderToDb.cs" />
+    <Compile Remove="Migrations\20200820220819_AddBarMenuAndOrderToDb.Designer.cs" />
+    <Compile Remove="Migrations\20200820221014_AddBarMenuAndOrderToDb.cs" />
+    <Compile Remove="Migrations\20200820221014_AddBarMenuAndOrderToDb.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Migrations\" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.7" />
   </ItemGroup>
 
   <ItemGroup>
