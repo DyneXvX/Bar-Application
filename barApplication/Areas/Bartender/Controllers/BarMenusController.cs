@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BarApplication.DataAccess.Data;
 using BarApplication.Models;
+using BarApplication.DataAccess.Repository.IRepository;
 
 namespace BarApplication.Areas.Bartender.Controllers
 {
@@ -14,9 +15,11 @@ namespace BarApplication.Areas.Bartender.Controllers
     public class BarMenusController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public BarMenusController(ApplicationDbContext context)
+        public BarMenusController(ApplicationDbContext context, IUnitOfWork unitOfWork)
         {
+            _unitOfWork = unitOfWork;
             _context = context;
         }
 

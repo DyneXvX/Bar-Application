@@ -1,8 +1,26 @@
-﻿@model IEnumerable<BarApplication.Models.Order>
+﻿
 <div class="text-center">
     <h1 class="display-4">Justin's Lounge</h1>
 </div>
 
+<br />
+<div class="text-center">
+    <h3>
+        <i>Welcome the the Lounge, please wait a moment till your server logs your table in.</i>
+        <br />
+        <i>Thank you</i>
+    </h3>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="offset-4 col-md-4 shadow-lg pt-4">
+            <img src="~/images/bar.jpeg" style="width: 100%"/>
+        </div>
+    </div>
+</div>
+<div class="text-center">
+    <a class="btn btn-primary" asp-area="Table01" asp-controller="Orders" asp-action="Create">New Drink Order</a>
+</div>
 
 
 

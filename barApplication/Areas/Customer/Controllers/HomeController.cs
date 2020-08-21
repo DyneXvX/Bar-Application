@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using BarApplication.Models.ViewModels;
+using BarApplication.DataAccess.Repository.IRepository;
+using BarApplication.Models;
 
 namespace BarApplication.Areas.Customer.Controllers
 {
@@ -14,14 +16,17 @@ namespace BarApplication.Areas.Customer.Controllers
     {
        
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
+            IEnumerable<Order> orders = _unitOfWork.Order.GetAll();
             return View();
         }
 
