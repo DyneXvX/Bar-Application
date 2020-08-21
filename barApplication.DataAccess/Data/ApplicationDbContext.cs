@@ -16,5 +16,6 @@ namespace BarApplication.DataAccess.Data
 
         public DbSet<BarMenu> BarMenu { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
