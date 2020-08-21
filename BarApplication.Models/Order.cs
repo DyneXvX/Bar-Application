@@ -11,9 +11,6 @@ namespace BarApplication.Models
 
         [Display(Name = "Quantity")] public int QuantityOfDrink { get; set; }
 
-        [DataType(DataType.Currency)]
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Total { get; set; } //had to look up standards. 18 digits with 2 to the right.
 
         [ForeignKey("MenuId")] public BarMenu BarMenu { get; set; }
     }
