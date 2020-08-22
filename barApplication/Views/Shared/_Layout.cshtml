@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using BarApplication.Utility 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -22,20 +23,28 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Drink Selection Options                                
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" asp-area="Bartender" asp-controller="BarMenus" asp-action="Index">Bar Menu</a>
-                                <a class="dropdown-item" asp-area="Table01" asp-controller="Orders" asp-action="Index">Orders</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </div>
-                        </li>
+                        @if (User.IsInRole(Sd.Role_Manager) || (User.IsInRole(Sd.Role_Bartender)))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Bartending Options
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="Bartender" asp-controller="BarMenus" asp-action="Index">Bar Menu</a>
+                                    <a class="dropdown-item" asp-area="Table01" asp-controller="Orders" asp-action="Index">Pending Orders</a>
+                                </div>
+                            </li>}
+                        @if (User.IsInRole(Sd.Role_Manager))
+                        {
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Manager Options
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Register">Register a New User</a>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

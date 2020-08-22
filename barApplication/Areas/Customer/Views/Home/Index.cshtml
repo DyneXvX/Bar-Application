@@ -1,26 +1,52 @@
-﻿
+﻿@using BarApplication.Utility 
 <div class="text-center">
     <h1 class="display-4">Justin's Lounge</h1>
 </div>
 
 <br />
-<div class="text-center">
-    <h3>
-        <i>Welcome the the Lounge, please wait a moment till your server logs your table in.</i>
-        <br />
-        <i>Thank you</i>
-    </h3>
-</div>
-<div class="container">
-    <div class="row">
-        <div class="offset-4 col-md-4 shadow-lg pt-4">
-            <img src="~/images/bar.jpeg" style="width: 100%"/>
+
+
+    <div class="text-center">
+        <h3>
+            <i>Welcome the the Lounge.</i>
+        </h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="offset-4 col-md-4 shadow-lg pt-4">
+                <img src="~/images/bar.jpeg" style="width: 100%"/>
+            </div>
         </div>
     </div>
-</div>
-<div class="text-center">
-    <a class="btn btn-primary" asp-area="Table01" asp-controller="Orders" asp-action="Create">New Drink Order</a>
-</div>
+
+@if (User.IsInRole(Sd.Role_Manager) || (User.IsInRole(Sd.Role_Bartender) || (User.IsInRole(Sd.Role_Server))))
+{
+    <div class="text-center">
+        <h2>Your table number is 1</h2>
+        <h3>
+            You are welcome to place an order for drinks from here.
+            <br />
+            Just click on the button below and pick from our drop down selection.
+        </h3>
+    </div>
+    <div>
+        <a class="btn btn-primary btn-block" asp-area="Table01" asp-controller="Orders" asp-action="Create">Create a New Drink Order</a>
+    </div>
+
+}
+
+@if (ViewBag.Message != null)
+{
+    <script>
+        swal({
+            title: "Order Sent",
+            text: "Your order has been sent to the bar",
+            icon: "success"
+        });
+    </script>
+}
+
+
 
 
 

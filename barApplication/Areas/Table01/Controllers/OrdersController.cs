@@ -64,7 +64,9 @@ namespace BarApplication.Areas.Table01.Controllers
             {
                 _context.Add(order);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                ViewBag.Message = "Order Sent";
+                return RedirectToAction("Index", "Home", new {Area = "Customer"});
             }
             ViewData["MenuId"] = new SelectList(_context.BarMenu, "Id", "DrinkName", order.MenuId);
             return View(order);

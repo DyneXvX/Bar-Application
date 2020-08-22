@@ -77,12 +77,13 @@ namespace BarApplication.Areas.Identity.Pages.Account
 
             Input = new InputModel()
             {
-                RoleList = _roleManager.Roles.Where(u=>u.Name!=Sd.Role_Customer).Select(x=>x.Name).Select(i=> new SelectListItem
+                RoleList = _roleManager.Roles.Select(x=>x.Name).Select(i=> new SelectListItem
                 {
                     Text = i,
                     Value = i
                 })
             };
+
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
         }
 
@@ -94,7 +95,7 @@ namespace BarApplication.Areas.Identity.Pages.Account
             {
                 var user = new ApplicationUser
                 {
-                    UserName = Input.Name,
+                    UserName = Input.Email,
                     Email = Input.Email,
                     Name = Input.Name,
                     Role = Input.Role
@@ -108,19 +109,35 @@ namespace BarApplication.Areas.Identity.Pages.Account
                     {
                         await _userManager.AddToRoleAsync(user, Sd.Role_Customer);
                     }
+                    else
+                    {
+                        await _userManager.AddToRoleAsync(user, user.Role);
+                    }
 
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new {email = Input.Email, returnUrl});
                     }
-
-                    if (user.Role != null)
+                    else //I don't want to sign out a manager if they register new users.
                     {
-                        return RedirectToAction("Index", "Customer", new {Area = "Customer"});
+                        if (user.Role == null)
+                        {
+                            await _signInManager.SignInAsync(user, isPersistent: false);
+                            return LocalRedirect(returnUrl);
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Home", new {Area = "Customer"});
+                        }
                     }
 
-                    await _signInManager.SignInAsync(user, false);
-                    return LocalRedirect(returnUrl);
+                    //if (user.Role != null)
+                    //{
+                    //    return RedirectToAction("Index", "Customer", new {Area = "Customer"});
+                    //}
+
+                    //await _signInManager.SignInAsync(user, false);
+                    //return LocalRedirect(returnUrl);
                 }
 
                 foreach (var error in result.Errors) ModelState.AddModelError(string.Empty, error.Description);

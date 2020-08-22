@@ -5,9 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
-
-<h4>Order</h4>
+<h1>Place a New Order</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -28,14 +26,14 @@
                 <span asp-validation-for="QuantityOfDrink" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create this Order" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-area="Customer" asp-controller="Home" asp-action="Index">Back to Home Page</a>
 </div>
 
 @section Scripts {

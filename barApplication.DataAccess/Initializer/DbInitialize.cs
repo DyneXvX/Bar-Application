@@ -28,7 +28,7 @@ namespace BarApplication.DataAccess.Initializer
             {
                 if (_db.Database.GetPendingMigrations().Count() > 0) _db.Database.Migrate();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
             }
 
@@ -47,9 +47,9 @@ namespace BarApplication.DataAccess.Initializer
                 Email = "manager@outlook.com",
                 EmailConfirmed = true,
                 Name = "Justin Thoms"
-            }, "Password123*").GetAwaiter().GetResult();
+            }, "Password123").GetAwaiter().GetResult();
 
-            ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Email == "manager@outlook.com");
+            ApplicationUser user = _db.ApplicationUsers.FirstOrDefault(u => u.Name == "Justin Thoms");
 
             _userManager.AddToRoleAsync(user, Sd.Role_Manager).GetAwaiter().GetResult();
         }
