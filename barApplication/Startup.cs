@@ -1,4 +1,5 @@
 using BarApplication.DataAccess.Data;
+using BarApplication.DataAccess.Initializer;
 using BarApplication.DataAccess.Repository;
 using BarApplication.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Builder;
@@ -26,14 +27,15 @@ namespace barApplication
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(configure =>
-                    {
-                        configure.Password.RequireNonAlphanumeric = false;
-                    }
+            services.AddIdentity<IdentityUser, IdentityRole>(configure =>
+                      {
+                          configure.Password.RequireNonAlphanumeric = false;
+                      }
                 )
                 .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IDbInitializer, DbInitialize>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.ConfigureApplicationCookie(options =>
@@ -45,7 +47,7 @@ namespace barApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -66,7 +68,7 @@ namespace barApplication
 
             app.UseAuthentication();
             app.UseAuthorization();
-
+            dbInitializer.Initialize();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

@@ -1,4 +1,5 @@
 ﻿@page
+@using BarApplication.Utility
 @model RegisterModel
 @{
     ViewData["Title"] = "Register";
@@ -32,6 +33,14 @@
                 <input asp-for="Input.ConfirmPassword" class="form-control" />
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
+            @if (User.IsInRole(Sd.Role_Manager))
+            {
+                <div class="form-group">
+                    <label asp-for="Input.Role"></label>
+                    @Html.DropDownListFor(m=>m.Input,Model.Input.RoleList,
+                        "Please Select Their Role", new { @class="form-control"})
+                </div>
+            }
             <button type="submit" class="btn btn-primary">Register</button>
         </form>
     </div>
