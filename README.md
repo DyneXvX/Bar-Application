@@ -26,8 +26,6 @@ Due August 31 2020
 
 ```
 We are to build a web application that handles drink orders from the table. 
-However, I have no clue how these work, I have never seen one in real life and to be honest.
-I am not even sure allowing the customers to order drinks from their table is a good idea.
 ```
 
 ## General Build Guide
@@ -36,33 +34,40 @@ I am not even sure allowing the customers to order drinks from their table is a 
 I have designed this to run with multiple accounts. 
 1. The table the screen is at: Table 1 for this program
 -- They only have access to a create order screen
-2. The bartender. They need to build a bar menu for everyone to order from. (Plus I figure house specials or sales.)
+2. The bartender. They need to build a bar menu for everyone to order from. 
+(Plus I figure house specials or sales.)
 --They also will have access to the full order screen for knowing what table ordered what
 3. The Manager: Has control over the accounts 
 -- Kind of like a admin
 --Has their own menus as well as the ability to create new accounts for their employees..
-4. The general customer screen: 
---Just there before the server would log in and a way to show a standard index page.
-5. The Server:
+4. The Server:
 --Built so the waiter/waitress can log in the table when they start their shift.
---This way customer can use it.... I guess... Still sounds weird... but I built it anyways.
+--This way customer can use it.
+5. The general customer screen: 
+--Just there before the server would log in and a way to show a standard index page.
 ```
 
 ## General Notes about this
 
 ```
 Ok with this you can place drink orders based on the bartenders menu. 
-The bartenders menu is customizable. I figure drink sales and such plus what if that want to carry 
-something new.
-As of right now you can pick any number for your table during the order, becuase I have never
-seen something like this in my life and this is my best attempt and a solid guess.
+The Manager has access to all screens plus registration of new employees
+The Bartender makes the Drink Menu and can see the Order Queue
+The Server is just the log in setup for the program to run correctly with any features.
+The Customer is just a simple screen with the bar picture and a login function.
+
+You need to log in as the Manager first or nothing will work. 
+Create your employees if you want.
+Create your Menu if you want to test the order system
+Create your Order from the main page.
+See the queue in the Bartenders dropdown.
 ```
 
 ## Known Issue
 
 ```
 If you try to create the same account twice it will crash. I have no been able to figure this out.
-Has something to do with Manager selecting roles for the new acconts
+Has something to do with Manager selecting roles for the new accounts
 However, this has nothing to do with the project I was suppose to build, I just wanted something more 
 real and I couldn't figure out this one issue before I said I was done.
 ```
