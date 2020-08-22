@@ -4,6 +4,9 @@
 
 ```
 Don't Yet I am still trying to set this up with everything going on with the first week of school.
+Db Initializer was built for this on 20/08/22
+Email: manager@outlook.com
+password: Password123*
 ```
 
 ## What is this for?
