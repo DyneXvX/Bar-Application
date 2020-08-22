@@ -63,13 +63,4 @@ Create your Order from the main page.
 See the queue in the Bartenders dropdown.
 ```
 
-## Known Issue
-
-```
-If you try to create the same account twice it will crash. I have no been able to figure this out.
-Has something to do with Manager selecting roles for the new accounts
-However, this has nothing to do with the project I was suppose to build, I just wanted something more 
-real and I couldn't figure out this one issue before I said I was done.
-```
-
 ## Thank you
