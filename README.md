@@ -67,9 +67,9 @@ See the queue in the Bartenders dropdown.
 
 ```
 Today while closing this out I came accross a weird issue where
-when the manager registers a new employee and picks a role,
-it will seldom crash. YOu can back out of it, however, it doesn't do this 
-all the time. I was going to look into it, however due to the fact it 
+when the manager registers a new employee that is already in the system,
+it will seldom crash. (No error check somewhere..)
+I was going to look into it, however due to the fact it 
 is extra and not required anyways for this project I am not going to stress this 
 unless I get free time in the next week.
 ```
