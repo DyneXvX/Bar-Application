@@ -63,4 +63,15 @@ Create your Order from the main page.
 See the queue in the Bartenders dropdown.
 ```
 
+## Issues
+
+```
+Today while closing this out I came accross a weird issue where
+when the manager registers a new employee and picks a role,
+it will seldom crash. YOu can back out of it, however, it doesn't do this 
+all the time. I was going to look into it, however due to the fact it 
+is extra and not required anyways for this project I am not going to stress this 
+unless I get free time in the next week.
+```
+
 ## Thank you
