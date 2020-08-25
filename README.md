@@ -72,6 +72,8 @@ it will seldom crash. (No error check somewhere..)
 I was going to look into it, however due to the fact it 
 is extra and not required anyways for this project I am not going to stress this 
 unless I get free time in the next week.
+--Update: 20/08/25 - I was told not to make it perfect it is fine as is and to stop. 
+(I still might come back to this at some point, but stopping is per the professor at this point.)
 ```
 
 ## Thank you
